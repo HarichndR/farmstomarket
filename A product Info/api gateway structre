@@ -1,0 +1,30 @@
+api-gateway/
+├── src/
+│   ├── routes/
+│   │   ├── farmsToMarket.js
+│   │   ├── liveBidding.js
+│   │   ├── payments.js
+│   │   ├── aiModel.js
+│   │   ├── chatbot.js
+│   │   └── index.js
+│   ├── middlewares/
+│   │   ├── authMiddleware.js
+│   │   ├── requestLogger.js
+│   │   ├── rateLimiter.js
+│   │   └── errorHandler.js
+│   ├── services/
+│   │   ├── proxyService.js
+│   │   └── authService.js
+│   ├── configs/
+│   │   ├── gatewayConfig.js
+│   │   └── serviceUrls.js
+│   ├── utils/
+│   │   ├── logger.js
+│   │   └── responseFormatter.js
+│   └── index.js
+├── tests/
+│   ├── integration/
+│   ├── unit/
+│   └── e2e/
+├── package.json
+├── README.md

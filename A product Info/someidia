@@ -1,0 +1,7 @@
+1-> -> think about for list products cards alway cache or give just required data like 1 img, rating and required info only onclike that project then load that all data and some ralted products which recomendeted by recomadation syastem
+
+2-> -> use threds , worker , cluster for havy task like img comprassion , 
+
+3-> ->  create two notifiction function which show in app notifiction and fcm both in may case both sended if user on app then send both in-app-notifiction and fcm notifiction
+
+4-> ->  user with every booking, order upadte realted data like quintity , booked Time
