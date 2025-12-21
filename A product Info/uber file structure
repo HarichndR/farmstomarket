@@ -1,0 +1,15 @@
+src/
+├── payments/
+│   ├── controllers/
+│   ├── models/
+│   ├── services/
+│   └── routes/
+├── rides/
+│   ├── controllers/
+│   ├── models/
+│   ├── services/
+│   └── routes/
+├── shared/
+│   ├── middleware/
+│   ├── utils/
+│   └── constants/

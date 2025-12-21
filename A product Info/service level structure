@@ -1,0 +1,18 @@
+services/user/
+├── src/
+│   ├── controllers/
+│   │   └── userController.js
+│   ├── models/
+│   │   └── userModel.js
+│   ├── routes/
+│   │   └── userRoutes.js
+│   ├── middlewares/
+│   │   └── userValidation.js
+│   ├── services/
+│   │   └── userService.js
+│   └── index.js
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   └── e2e/
+└── package.json

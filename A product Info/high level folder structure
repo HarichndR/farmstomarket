@@ -1,0 +1,42 @@
+root/
+├── services/
+│   ├── farms-to-market/
+│   │   ├── src/
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   └── README.md
+│   ├── live-bidding/
+│   │   ├── src/
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   └── README.md
+│   ├── payments/
+│   │   ├── src/
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   └── README.md
+│   ├── ai-model/
+│   │   ├── src/
+│   │   ├── models/
+│   │   ├── tests/
+│   │   ├── requirements.txt
+│   │   └── README.md
+│   └── chatbot/
+│       ├── src/
+│       ├── tests/
+│       ├── package.json
+│       └── README.md
+├── api-gateway/
+│   ├── src/
+│   ├── tests/
+│   ├── package.json
+│   └── README.md
+├── shared/
+│   ├── utils/
+│   ├── configs/
+│   ├── middlewares/
+│   └── README.md
+├── doc
+ker-compose.yml
+├── .env
+└── README.md
