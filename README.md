@@ -1,6 +1,6 @@
 # FarmstoMarket — Backend
 
-Professional, production-ready backend for an e‑Farm marketplace connecting farmers, nurseries, carriers and equipment owners with buyers and service requesters.
+ high lvele backend for an e‑Farm marketplace connecting farmers, nurseries, carriers and equipment owners with buyers and service requesters.
 
 This repository contains the server-side implementation: REST routes, controllers, services, Kafka/Redis integrations, Firebase notifications and authentication scaffolding.
 
@@ -268,7 +268,7 @@ For production, wire Kafka, Redis and MongoDB as external services (Docker Compo
 ## Project layout (high level)
 
 - `index.js` — App entry: loads routes, middleware and DB connection
-- `controller/` — Route handlers for resources (users, bookings, products, equipment, carriers)
+- `controller/` — Route handlers for resources (users, bookings, products, equipment, carriers, orders)
 - `Route/api/` — Express route definitions organized by resource
 - `schema/` — Mongoose schemas/models
 - `kafka/` — Kafka producers, consumers and config
@@ -280,9 +280,8 @@ For production, wire Kafka, Redis and MongoDB as external services (Docker Compo
 ## Important notes & TODOs
 
 - Kafka config currently uses a hardcoded `brokers` entry. Replace with environment-based configuration for flexibility.
-- There are two notification folders (`notification/` and `notifiction/`) with similar files — consider consolidating and removing duplicates.
 - Add a `.env.example` to document required environment variables without leaking secrets.
-- Add health-check endpoints and graceful shutdown for production reliability.
+
 
 ## Troubleshooting
 
@@ -296,8 +295,7 @@ For production, wire Kafka, Redis and MongoDB as external services (Docker Compo
 2. Open a PR with a clear description and relevant tests or run instructions
 
 ## License & Contact
-
-This project is licensed under MIT (update `package.json` `author` and `license` if needed).
-
+Email:harichndrsolunke4@gmail.com
+Mobile:9307541477
 Maintainer: Harichndr salunkhe 
 
