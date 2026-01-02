@@ -1,5 +1,5 @@
 const RedisClient = require('../config/redis.config');
-const {User}= require('../../schema/user');
+const { User } = require('../../schema/user');
 const setFCMinRedis = async (userId, FCM) => {
     try {
         const msg = await RedisClient.set(userId, JSON.stringify(FCM));
@@ -9,19 +9,19 @@ const setFCMinRedis = async (userId, FCM) => {
     }
 }
 
-const getFCMinRedis = async (userId)=>{
-    try{
-    const FCMtoken= RedisClient.get(userId);
-    if(!FCMtoken){
-        const FCMtoken=await User.findOne({_id:userId}).select('FCMtoken');
-        const msg =await setFCMinRedis(userId, FCMtoken);
+const getFCMinRedis = async (userId) => {
+    try {
+        const FCMtoken = RedisClient.get(userId);
+        if (!FCMtoken) {
+            const FCMtoken = await User.findOne({ _id: userId }).select('FCMtoken');
+            const msg = await setFCMinRedis(userId, FCMtoken);
+            return FCMtoken;
+        }
         return FCMtoken;
-    }
-    return FCMtoken;
-    }catch(err){
+    } catch (err) {
         throw new Error('error when get FCM from Redis', err.message);
     }
 }
 
 
-module.exports={setFCMinRedis,getFCMinRedis}
+module.exports = { setFCMinRedis, getFCMinRedis }

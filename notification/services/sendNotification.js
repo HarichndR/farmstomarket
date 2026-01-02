@@ -1,7 +1,8 @@
+// Adapter to maintain backward compatibility with existing imports
 const admin = require('../config/firebase.config');
-async function sendNotification(devicetoken, title, body,type=null,priority) {
-    console.log('-->>-->>',body);
-    if (!devicetoken)return  {msg:'device token not provided'};
+async function sendNotification(devicetoken, title, body, type = null, priority) {
+    console.log('-->>-->>', body);
+    if (!devicetoken) return { msg: 'device token not provided' };
     if (!title && !body) return { msg: 'no title or body found' };
     const message = {
         token: devicetoken,
@@ -10,7 +11,7 @@ async function sendNotification(devicetoken, title, body,type=null,priority) {
             body,
 
         },
-        
+
     }
 
     console.log(message);
@@ -18,11 +19,9 @@ async function sendNotification(devicetoken, title, body,type=null,priority) {
         const msg = await admin.messaging().send(message);
         return msg
     } catch (err) {
-        console.log('####'+err.message);
+        console.log('####' + err.message);
         throw new err.message;
     }
 };
 
-
 module.exports = sendNotification;
-

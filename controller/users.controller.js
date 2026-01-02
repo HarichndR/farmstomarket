@@ -1,4 +1,4 @@
-const sendNotifiction = require('../notification/services/sendNotifiction');
+const sendNotifiction = require('../notification/services/sendNotification');
 
 const { Farmer, Consultant, AgriMart, buyer, nursery, User, carriers, farming_Equipments } = require('../schema/user');
 const getCoordinatesFromAddress = require('../services/getCord');

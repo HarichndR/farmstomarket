@@ -1,5 +1,5 @@
 const isAvailable = require('./isAvailable');
-const sendNotifiction = require('../notification/services/sendNotifiction');
+const sendNotifiction = require('../notification/services/sendNotification');
 const { createEventBookRequest } = require('../kafka/producer/BookingProducers/produceBookEventRequest');
 async function BookingRequist(model, data) {
     try {
