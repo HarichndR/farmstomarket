@@ -3,7 +3,7 @@ const CarriersVehicle = require('../schema/carriers/carriersSchema');
 const { FarmingEquipment } = require('../schema/equipments/equipmentsBaseSchema');
 const { v4: uuidv4 } = require('uuid');
 const BookingRequist = require('../services/BookingRequest');
-//const sendNotifiction= require('../notifiction/services/sendNotifiction');
+//const sendNotifiction= require('../notification/services/sendNotifiction');
 /*1.Create a booking/carriers,equipments
 2.Get all bookings //carriers,equipments
 3.Get booking details by ID // carriers,equipments
@@ -17,9 +17,9 @@ const BookingRequist = require('../services/BookingRequest');
 
 const req_bookFarmingEquipment = async (req, res) => {
     try {
-        
+
         const { eqpID, ownerID } = req.query;
-        const bookerID = req.user.id;
+        const { bookerID } = req.user.id;
         console.log(eqpID);
         const { start_time, end_time, work_Location } = req.body;
         const data = {
@@ -37,7 +37,7 @@ const req_bookFarmingEquipment = async (req, res) => {
         console.log('this me', msg);
         if (msg != 'requist sended') return res.status(400).json({ msg: 'somethings error while send booking requist' });
 
-        return res.status(200).json({ msg: 'requist sended', orderId });
+        return res.status(200).json({ msg: 'requist sended' });
     } catch (err) {
         console.log(err.message);
         return res.status(500).json({ msg: err.message });

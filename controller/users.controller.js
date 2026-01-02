@@ -1,4 +1,4 @@
-const sendNotifiction = require('../notifiction/services/sendNotifiction');
+const sendNotifiction = require('../notification/services/sendNotifiction');
 
 const { Farmer, Consultant, AgriMart, buyer, nursery, User, carriers, farming_Equipments } = require('../schema/user');
 const getCoordinatesFromAddress = require('../services/getCord');
@@ -25,7 +25,7 @@ const RegisterUser = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ msg: 'Error fetching coordinates', error });
     }
-     console.timeEnd('beforcordinate');
+    console.timeEnd('beforcordinate');
     const location = {
         type: 'Point',
         coordinates: [coordinates.longitude, coordinates.latitude],
@@ -68,11 +68,11 @@ const RegisterUser = async (req, res) => {
         const newUser = await role.model.create({ ...commonFields, ...role.extraFields });
         console.log(newUser, 'this console');
 
-         res.status(201).json({ msg: 'User created successfully', user: newUser });
-        res.on('finish' ,()=>{
-           sendMessage 
+        res.status(201).json({ msg: 'User created successfully', user: newUser });
+        res.on('finish', () => {
+            sendMessage
         })
-      
+
     } catch (err) {
         if (err.code == 11000) return res.status(409).json({ msg: 'email address already exist pleas enter other email' })
         console.error(err);
@@ -90,7 +90,7 @@ const userlogin = async (req, res) => {
             return res.status(401).json({ msg: 'token not get Authentication failed' });
         }
         // Set token in HTTP cookie
-        res.cookie('token', token, { httpOnly: true, secure: false, path: '/', maxAge: 168 * 60 * 60 * 1000 ,sameSite: 'Lax'}); // Set expiration to 1 day
+        res.cookie('token', token, { httpOnly: true, secure: false, path: '/', maxAge: 168 * 60 * 60 * 1000, sameSite: 'Lax' }); // Set expiration to 1 day
         return res.status(201).json({ msg: "Cookie set with token" });
     } catch (err) {
         console.error(err.messages);
