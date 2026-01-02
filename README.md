@@ -36,6 +36,33 @@ Flow example — booking an equipment:
 3. Service publishes Kafka event (`Booking-Requiest`) and returns status.
 4. Kafka consumer sends notifications via FCM and/or in‑app storage, and emits DB‑save events.
 
+**Architecture Diagram**
+
+```mermaid
+flowchart LR
+  A[Client (Mobile / Web)] -->|HTTP| B[API Gateway / Express (Route modules)]
+  B --> C[Controllers]
+  C --> D[Services]
+  D --> E[MongoDB (Mongoose)]
+  D --> F[Redis (cache / FCM tokens)]
+  D --> G[Kafka Producers]
+  G --> H[Kafka Brokers]
+  H --> I[Kafka Consumers]
+  I --> J[Notification Service]
+  J --> M[Firebase FCM]
+  I --> E
+  D --> K[External APIs (Twilio, LocationIQ, GSTIN)]
+  B --> L[Middlewares (Auth, Logging, Error)]
+  F --> N[FCM Token Cache]
+```
+
+- **Client → API Gateway:** Mobile/web clients call Express routes under `Route/api/*`.
+- **Controllers:** Validate/authorize and forward requests to `services/`.
+- **Services:** Handle business logic, DB access, caching, and produce Kafka events.
+- **Kafka:** Decouples async workflows — consumers handle notifications, retries, and DB-side effects.
+- **Notifications:** Consumers push to Firebase (FCM) and persist in‑app notifications in MongoDB.
+- **Redis:** Caches FCM tokens and other ephemeral state to speed lookups.
+
 ---
 
 ## Tech Stack
