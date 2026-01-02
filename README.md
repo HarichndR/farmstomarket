@@ -40,19 +40,19 @@ Flow example — booking an equipment:
 
 ```mermaid
 flowchart LR
-  A[Client (Mobile / Web)] -->|HTTP| B[API Gateway / Express (Route modules)]
+  A[Client] -->|HTTP| B[API Gateway - Express]
   B --> C[Controllers]
   C --> D[Services]
-  D --> E[MongoDB (Mongoose)]
-  D --> F[Redis (cache / FCM tokens)]
+  D --> E[MongoDB]
+  D --> F[Redis]
   D --> G[Kafka Producers]
   G --> H[Kafka Brokers]
   H --> I[Kafka Consumers]
   I --> J[Notification Service]
   J --> M[Firebase FCM]
   I --> E
-  D --> K[External APIs (Twilio, LocationIQ, GSTIN)]
-  B --> L[Middlewares (Auth, Logging, Error)]
+  D --> K[External APIs - Twilio/LocationIQ/GSTIN]
+  B --> L[Middlewares]
   F --> N[FCM Token Cache]
 ```
 
