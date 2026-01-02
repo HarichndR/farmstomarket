@@ -299,5 +299,5 @@ For production, wire Kafka, Redis and MongoDB as external services (Docker Compo
 
 This project is licensed under MIT (update `package.json` `author` and `license` if needed).
 
-Maintainer: Your Name or Team Name — replace contact details in `package.json` and this README with real info.
+Maintainer: Harichndr salunkhe 
 
