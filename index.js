@@ -14,9 +14,13 @@ const bookingRoute = require('./Route/api/booking/booking.routes');
 const equipmentRoute = require('./Route/api/equipments/equipments.routes');
 const logger = require('./middlewares/logging');
 const errorlogger = require('./middlewares/errorLogger');
+const rateLimiter = require('./middlewares/rateLimiter');
 const { attachResponses } = require('./utils/response');
 const pushNotificationRoute = require('./notification/Route/pushNotification.routes');
 const checkUserAutho = require('./middlewares/checkUserAutho');
+const ordersRoute = require('./Route/api/orders/orders.routes');
+// start kafka consumers (order inventory)
+require('./kafka/consumer/OrderConsumers/consumeOrderRequest');
 const PORT = process.env.PORT;
 app.use(cors({
   origin: 'http://localhost:3001',
@@ -27,6 +31,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(logger);
 app.use(attachResponses);
+app.use(rateLimiter);
 app.use(express.urlencoded({ extended: false }));
 
 
@@ -43,6 +48,7 @@ app.use('/carriers', carriersRoute);
 app.use('/equipment', equipmentRoute);
 app.use('/booking', checkUserAutho, bookingRoute);
 app.use('/pushNotifiction', pushNotificationRoute);
+app.use('/orders', ordersRoute);
 app.delete('/', async (req, res) => {
   const response = await User.deleteMany({});
   res.send("im user from FARMSTOMARKET" + response);
